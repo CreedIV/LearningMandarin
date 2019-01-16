@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ 
+ <head>
+ 	<title>Type Audio</title>
+ 	
+ 	<script type="text/javascript" src="/js/translate.js"></script>
+ 	<script type="text/javascript" src="/js/match.js"></script>
+ 	<script type="text/javascript" src="/js/bottompage.js"></script>
+ 	<script th:inline="javascript">
+		/*<![CDATA[*/	
+		  var words = /*[[${sectionWords}]]*/;
+		/*]]>*/ 
+		function myLoadFunc(){ 
+			bindEnterToButton(); 
+			createBottom();
+			document.getElementById('destAudioBtn').click();
+		}	
+	</script>
+ </head>
+ 
+ <body onload="myLoadFunc()">
+ 	<h3 class="title" th:text="${section}">section</h3>
+	<h2 class="title">Type the audio</h2>
+
+	
+	<div id="body">
+	<audio id="destAudio" th:src="${sectionWords[0].destAudioPath}" preload="auto"></audio>
+	<button id="destAudioBtn" onclick="document.getElementById('destAudio').play()">Listen</button>
+	<div></div>
+	<input id="translation" type="text" onkeyup="translate_value('translation')"/>
+	<div></div>
+	<button id="myButton" th:attr="onclick=|match_audio()|">Submit</button>
+	<div></div>
+	<label id="destWord"></label>
+	</div>						 
+
+ </body>

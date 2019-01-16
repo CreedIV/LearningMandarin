@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ 
+ <head>
+ 	<title>Type Translation</title>
+ 	
+ 	<script type="text/javascript" src="/js/translate.js"></script>
+ 	<script type="text/javascript" src="/js/match.js"></script>
+ 	<script type="text/javascript" src="/js/bottompage.js"></script>
+ 	
+ 	<script th:inline="javascript">
+		/*<![CDATA[*/	
+		  var words = /*[[${sectionWords}]]*/;
+		/*]]>*/ 
+		function myLoadFunc(){ 
+			bindEnterToButton(); 
+			createBottom();
+		}
+	</script>
+ </head>
+ 
+ <body onload="myLoadFunc()">
+ 	<h3 class="title" th:text="${section}">section</h3>
+	<h2 class="title">Type the Translation</h2>
+
+	
+	<div id="body">
+	<label id="srcWord" for="srcWord" th:text="${sectionWords[0].srcWord}">SOURCE WORD: </label>
+	<div></div>
+	<input id="translation" type="text" onkeyup="translate_value('translation')"/>
+	<div></div>	
+	<button id="myButton" th:attr="onclick=|match_text()|">Submit</button>	
+	<div></div>
+	<label id="destWord"></label>
+	</div>					 
+
+ </body>

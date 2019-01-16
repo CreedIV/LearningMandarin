@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ 
+ <head>
+ 	<title>Vocab</title>
+ 	<script type="text/javascript" src="/js/translate.js"></script>
+ 	<script type="text/javascript" src="/js/bottompage.js"></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/	
+		  var words = /*[[${sectionWords}]]*/;
+		
+		
+		  function afterload(){
+		  	  var i
+			  for(i = 0; i < words.length; i++){
+				  var srcaudio = document.createElement("audio")
+				  srcaudio.id = i+1
+				  srcaudio.src = words[i].srcAudioPath
+				  srcaudio.preload = "auto"
+				  var srcbutton = document.createElement("button");
+				  srcbutton.onclick=(function(i) {
+					    return function() {
+					    	document.getElementById(i).play()
+					     };
+					 })(i+1);
+				  srcbutton.appendChild(document.createTextNode(words[i].srcWord));
+				  var page = document.getElementById("body");
+				  page.appendChild(srcbutton);
+				  page.appendChild(srcaudio);
+				  
+				  
+				  var destaudio = document.createElement("audio")
+				  destaudio.id = -(i+1)
+				  destaudio.src = words[i].destAudioPath
+				  destaudio.preload = "auto"
+				  var destbutton = document.createElement("button");
+				  destbutton.onclick=(function(i) {
+					    return function() {
+					    	document.getElementById(i).play()
+					     };
+					 })(-(i+1));
+				  destbutton.appendChild(document.createTextNode(words[i].destWord));
+				  var page = document.getElementById("body");
+				  page.appendChild(destbutton);
+				  page.appendChild(destaudio);
+				  
+				  page.appendChild(document.createElement("div"))
+			  }
+		  	createBottom()
+		  }
+
+		
+		/*]]>*/ 
+	</script>
+ </head>
+ 
+ <body onload="afterload()">
+  	<h3 class="title" th:text="${section}">section</h3>
+ 	<h2 class="title">Lesson Vocab</h2>
+
+	
+	<div id="body">
+	<!-- buttons are generated in js -->
+	</div>
+	
+	
+ </body>
+ 

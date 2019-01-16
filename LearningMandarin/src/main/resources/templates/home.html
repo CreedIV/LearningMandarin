@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+	
+	
+	<head>
+		<title>Learning Mandarin</title>
+	</head>
+ 	
+ 	<body>
+ 		<h1>Welcome</h1>
+ 		<div></div>
+ 		<h2>Select a language and lesson</h2>
+ 		<div></div>
+ 		<h2>Language:</h2>
+		<form method="POST" th:object="${lessonSelection}">
+	 		<input type="radio" name="language" th:value="Mandarin" checked="checked"> Mandarin <br>
+	 		<input type="radio" name="language" th:value="English"> English <br>
+	 		<div></div>
+	 		<h2>Lesson</h2>
+	 		 <input type="radio" name="lesson" th:value="1" checked="checked"> lesson 1 <br>
+	 		 <input type="radio" name="lesson" th:value="2"> lesson 2 <br>
+	 		 <input type="radio" name="lesson" th:value="3"> lesson 3 <br>
+	 		 <input type="radio" name="lesson" th:value="4"> lesson 4 <br>
+	 		 <input type="radio" name="lesson" th:value="5"> lesson 5 <br>
+	 		 <input type="radio" name="lesson" th:value="6"> lesson 6 <br>
+	 		 <input type="radio" name="lesson" th:value="7"> lesson 7 <br>
+	 		 <input type="radio" name="lesson" th:value="8"> lesson 8 <br>
+	 		 <input type="radio" name="lesson" th:value="9"> lesson 9 <br>
+	 		 <input type="radio" name="lesson" th:value="10"> lesson 10 <br>
+	 		 <div><br></div>
+	 		 <input type="submit" value="load lesson">
+ 		 </form>
+ 		
+ 	</body>
+</html>

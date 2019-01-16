@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+	
+	
+	<head>
+		<title>Learning Mandarin</title>
+	</head>
+ 	
+ 	<body>
+ 		<h2>Select a section for lesson</h2>
+ 		<div></div>
+		<form method="POST" th:object="${sectionSelection}">
+	 		<div th:each="section : ${sections}"  >
+	 		 <input type="radio" th:name=selectedSection th:value=${section} th:text=${section}>
+	 		 </div>
+	 		 <input type="submit" value="load section">
+ 		 </form>
+ 		
+ 	</body>
+</html>
